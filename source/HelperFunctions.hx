@@ -1,5 +1,5 @@
 import GameJolt.GameJoltInfo;
-#if desktop
+#if sys
 import sys.io.Process;
 import sys.FileSystem;
 import sys.io.File;
