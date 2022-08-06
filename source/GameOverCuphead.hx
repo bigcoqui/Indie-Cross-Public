@@ -120,6 +120,10 @@ class GameOverCuphead extends MusicBeatSubstate
 		bg.alpha = 0.6;
 		bg.scrollFactor.set();
 		add(bg);
+		
+		#if android
+  	addVirtualPad(UP_DOWN, A);
+    #end
 
 		var death:FlxSprite = new FlxSprite().loadGraphic(Paths.image('death', 'cup'));
 		death.updateHitbox();
