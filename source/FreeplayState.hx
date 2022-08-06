@@ -229,6 +229,10 @@ class FreeplayState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = FlxG.save.data.highquality;
 		add(bg);
+		
+		#if android
+  	addVirtualPad(FULL, A_B);
+    #end
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
