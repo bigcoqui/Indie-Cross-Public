@@ -229,10 +229,6 @@ class FreeplayState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = FlxG.save.data.highquality;
 		add(bg);
-		
-		#if android
-  	addVirtualPad(FULL, A_B);
-    #end
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -345,6 +341,10 @@ class FreeplayState extends MusicBeatState
 			cupTea.alpha = 0.00001;
 		}
 		add(cupTea);
+
+		#if android
+  	addVirtualPad(LEFT_FULL, A_B);
+    #end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
 		{
@@ -562,11 +562,11 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 
-		if (FlxG.keys.justPressed.UP)
+		if (controls.UP_P)
 		{
 			changeSelection(-1);
 		}
-		if (FlxG.keys.justPressed.DOWN)
+		if (controls.DOWN_P)
 		{
 			changeSelection(1);
 		}
