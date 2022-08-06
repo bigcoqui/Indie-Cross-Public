@@ -115,12 +115,12 @@ class FreeplaySelect extends MusicBeatState
 				backOut();
 			}
 
-			if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
+			if (controls.LEFT_P || FlxG.keys.justPressed.A)
 			{
 				changeSelection(curSelected - 1);
 			}
 
-			if (FlxG.keys.justPressed.RIGHT || FlxG.keys.justPressed.D)
+			if (controls.RIGHT_P || FlxG.keys.justPressed.D)
 			{
 				changeSelection(curSelected + 1);
 			}
