@@ -81,10 +81,6 @@ class LoginScreen extends FlxTypedSpriteGroup<FlxSprite>
 		add(noBtt);
 		buttons.push(noBtt);
 
-		#if android
-		addVirtualPad(UP_DOWN, A_B);
-		#end
-
 		FlxTween.tween(this, {alpha: 1.0}, 0.5, {onComplete: function(_)
 		{
 			disableInput = false;
@@ -307,10 +303,6 @@ class MainMenuState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = FlxG.save.data.highquality;
 		add(bg);
-		
-		#if android
-  	addVirtualPad(UP_DOWN, A_B);
-    #end
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menu/LOGO', 'preload'));
 		logo.origin.set();
@@ -339,6 +331,10 @@ class MainMenuState extends MusicBeatState
 		versionText.text = name + " v." + version + " commit " + commitHash;
 		#end
 		add(versionText);
+
+		#if android
+		addVirtualPad(UP_DOWN, A_B);
+		#end
 
 		if (!FlxG.save.data.stopGJ && !GameJoltAPI.getStatus())
 		{
@@ -433,27 +429,6 @@ class MainMenuState extends MusicBeatState
 		soundX = FlxG.width/2;
 		ear = new FlxObject();
 		ear.setPosition(soundX, FlxG.height/2);
-
-		/*var username:String = 'user';
-		if (GameJoltAPI.getStatus())
-		{
-			username = GameJoltAPI.getUserInfo();
-		}
-		else
-		{
-			username = HelperFunctions.getUsername();
-		}
-		trace(username);
-
-		if (FileSystem.exists('./assets/data/user.txt'))
-		{
-			trace('user text found');
-		}
-		else
-		{
-			trace('user text not found');
-			File.saveContent('./assets/data/user.txt', username);
-		}*/
 
 		//shitty fix (im sorry ppl who played the broken build)
 					if (!FlxG.save.data.secretChars[0] && !FlxG.save.data.secretChars[1] && !FlxG.save.data.secretChars[2] 
@@ -581,7 +556,6 @@ class MainMenuState extends MusicBeatState
 				}
 			}
 
-
 			if (FlxG.keys.justPressed.L && FlxG.keys.pressed.CONTROL && debugTools)
 			{
 				showcase = !showcase;
@@ -589,12 +563,12 @@ class MainMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('confirmMenu', 'preload'));
 			}
 
-			if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+			if (controls.UP_P || FlxG.keys.justPressed.W)
 			{
 				changeSelection(curSelected - 1);
 			}
 
-			if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.S)
+			if (controls.DOWN_P || FlxG.keys.justPressed.S)
 			{
 				changeSelection(curSelected + 1);
 			}
