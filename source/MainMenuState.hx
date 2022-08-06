@@ -307,6 +307,10 @@ class MainMenuState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = FlxG.save.data.highquality;
 		add(bg);
+		
+		#if android
+  	addVirtualPad(UP_DOWN, A_B);
+    #end
 
 		var logo:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menu/LOGO', 'preload'));
 		logo.origin.set();
