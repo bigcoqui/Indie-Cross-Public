@@ -81,6 +81,10 @@ class LoginScreen extends FlxTypedSpriteGroup<FlxSprite>
 		add(noBtt);
 		buttons.push(noBtt);
 
+		#if android
+		addVirtualPad(UP_DOWN, A_B);
+		#end
+
 		FlxTween.tween(this, {alpha: 1.0}, 0.5, {onComplete: function(_)
 		{
 			disableInput = false;
@@ -114,13 +118,13 @@ class LoginScreen extends FlxTypedSpriteGroup<FlxSprite>
 				back();
 			}
 
-			if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+			if (controls.UP_P || FlxG.keys.justPressed.W)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeSelection(curSelected - 1);
 			}
 
-			if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.S)
+			if (controls.DOWN_P || FlxG.keys.justPressed.S)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeSelection(curSelected + 1);
