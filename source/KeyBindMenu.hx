@@ -112,6 +112,10 @@ class KeyBindMenu extends FlxSubState
 			canChange = true;
 		});
 
+    #if android
+  	addVirtualPad(NONE, B);
+    #end
+
 		super.create();
 	}
 
