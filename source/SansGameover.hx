@@ -90,6 +90,10 @@ class SansGameover extends MusicBeatSubstate
 			// txt.cameras = [PlayState.extCam];
 			add(txt);
 		});
+
+		#if android
+		addVirtualPad(NONE, A_B);
+		#end
 	}
 
 	var txtVc:FlxSound;
