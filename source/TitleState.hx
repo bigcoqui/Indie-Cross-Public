@@ -33,6 +33,10 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+	  #if android
+	  FlxG.android.preventDefaultKeys = [BACK];
+	  #end
+
 		trace('hello');
 
 		super.create();
@@ -196,6 +200,18 @@ class TitleState extends MusicBeatState
 			MainMenuState.showCredits = true;
 			FlxG.sound.play(Paths.sound('confirmMenu', 'preload'));
 		}
+
+		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
+
+		#if mobile
+		for (touch in FlxG.touches.list)
+		{
+			if (touch.justPressed)
+			{
+				pressedEnter = true;
+			}
+		}
+		#end
 
 		if (FlxG.keys.pressed.CONTROL && FlxG.keys.justPressed.R && videoDone)
 		{
