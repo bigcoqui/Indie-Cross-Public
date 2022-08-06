@@ -3,7 +3,6 @@ package;
 import flixel.math.FlxRect;
 import flixel.FlxSprite;
 
-
 class Balls extends FlxSprite
 {
 	public function new(x:Float = 0, y:Float = 0)
@@ -11,8 +10,6 @@ class Balls extends FlxSprite
 		super(x, y);
 		loadGraphic(Paths.image('heart', 'sans'));
 	}
-
-
 
 	public function isInside(rect:FlxRect):Bool
 		{
@@ -24,8 +21,5 @@ class Balls extends FlxSprite
 			if (thing.bottom > rect.bottom || thing.top < rect.top || thing.left < rect.left || thing.right > rect.right)
 				return false;
 			return true;
-
-
-
 		}
 }
