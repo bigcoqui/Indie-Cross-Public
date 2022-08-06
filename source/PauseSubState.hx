@@ -141,6 +141,10 @@ class PauseSubState extends MusicBeatSubstate
 		bg.scrollFactor.set();
 		bg.alpha = 0.6;
 		add(bg);
+		
+		#if android
+  	addVirtualPad(UP_DOWN, A);
+    #end
 
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
 		add(grpMenuShit);
