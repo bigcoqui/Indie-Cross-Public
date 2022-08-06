@@ -238,11 +238,6 @@ class HelperFunctions
 				bpm = "250";
 				formattedName = 'Saness';
 				hasMech = "true";
-			case 'fuel':
-				artistPrefix = 'LuvSeals';
-				bpm = "200";
-				formattedName = 'Fuel';
-				hasMech = "false";
 		}
 
 		//dodge stuff

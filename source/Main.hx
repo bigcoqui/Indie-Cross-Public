@@ -56,7 +56,7 @@ class Main extends Sprite
 	public static var logAsked:Bool = false;
 	public static var focusMusicTween:FlxTween;
 
-	public static var hiddenSongs:Array<String> = ['gose', 'gose-classic', 'saness', 'fuel'];
+	public static var hiddenSongs:Array<String> = ['gose', 'gose-classic', 'saness'];
 
 	public static var gjToastManager:GJToastManager;
 
