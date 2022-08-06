@@ -115,58 +115,6 @@ class GameJoltAPI
 		}
 	}
 
-	/**
-	 * 
-	 * This function checks the data that we got back from GameJolt,
-	 * if it says that the trophy is already unlocked,
-	 * check if the trophy is unlocked IN THE GAME.
-	 * 
-	 * If it isn't, then unlock it.
-	 * 
-	 * NOTE: For this function to work, the Tenta's GameJolt API has to be modified.
-	 * You must make the 'returnMap' variable available. A example: https://imgur.com/a/wj0ARTa
-	 * 
-	 * @param	trophyID	The ID of the trophy on GameJolt.
-	 * 
-	 */
-	/*
-		public static function checkTrophy(trophyID:Int)
-		{
-			GJApi.fetchTrophy(trophyID, function(returnMap)
-			{
-				var title:String = "";
-
-				@:privateAccess
-				{
-					var trophies:String = GJApi.returnMap.get('trophies').toString();
-					var data:String = 
-					title = data;
-				}
-
-				@:privateAccess
-				if (GJApi.returnMap.exists('message'))
-				{
-					var data:String = GJApi.returnMap.get('message').toString();
-					if (data.contains('already'))
-					{
-						trace('unlocking alioIYOIWUYBCDOIWTBRCOIWBT');
-						Achievements.unlockAchievement(title, true);
-					}
-				}
-
-				@:privateAccess
-				if (GJApi.returnMap.exists('achieved'))
-				{
-					var data:String = GJApi.returnMap.get('achieved').toString();
-					if (data.contains('true'))
-					{
-						trace('synced from gj!');
-						Achievements.unlockAchievement(title, true);
-					}
-				}
-			});
-		}
-	 */
 	public static function startSession()
 	{
 		GJApi.openSession(function()
@@ -250,10 +198,6 @@ class GameJoltLogin extends MusicBeatState
 		bg.screenCenter();
 		bg.scrollFactor.set();
 		add(bg);
-		
-		#if android
-  	addVirtualPad(UP_DOWN, A);
-    #end
 
 		charBop = new FlxSprite();
 		charBop.frames = Paths.getSparrowAtlas('gamejolt/BF', 'preload');
@@ -321,23 +265,12 @@ class GameJoltLogin extends MusicBeatState
 			addButton(1, 'Log Out', 280);
 		}
 
+		#if android
+  	addVirtualPad(NONE, B);
+    #end
+
 		if (GameJoltAPI.getStatus())
 		{
-			/* not working for some reason
-				FlxGameJolt.fetchAvatarImage(function(avatar:BitmapData)
-				{
-					var avatarImage:FlxSprite = new FlxSprite();
-					avatarImage.loadGraphic(FlxGraphic.fromBitmapData(avatar));
-					avatarImage.antialiasing = true;
-					avatarImage.updateHitbox();
-					avatarImage.screenCenter();
-					avatarImage.x += 350;
-					avatarImage.y += 200;
-					remove(charBop);
-					add(avatarImage);
-				});
-			 */
-
 			trace(GameJoltAPI.getUserInfo());
 			username = new FlxText(0, 75, 400, "Signed in as:\n" + GameJoltAPI.getUserInfo(), 40);
 			username.alignment = CENTER;
@@ -497,7 +430,7 @@ class GameJoltLogin extends MusicBeatState
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
-		if (FlxG.keys.justPressed.ESCAPE)
+		if (controls.BACK)
 		{
 			if (GameJoltLogin.fromOptions)
 			{
