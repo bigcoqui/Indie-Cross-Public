@@ -13,6 +13,9 @@
 	<window width="1280" height="720" fps="" background="#000000" hardware="true" vsync="false" />
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" vsync="false"/>
 
+	<!--Mobile-specific-->
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false"/>
+
 	<!-- _____________________________ Path Settings ____________________________ -->
 
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
@@ -58,10 +61,12 @@
 	<haxelib name="flixel-addons" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="discord_rpc" if="cpp"/>
-    <haxelib name="tentools" />
-	<haxelib name="linc_luajit" if="cpp"/>
+  <haxelib name="tentools" />
+	<haxelib name="linc_luajit" />
+	<haxelib name="extension-androidtools" if="android"/>
 	<haxelib name="systools" if="cpp"/>
     <ndll name="systools" haxelib="systools" if="cpp" />
+    
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
@@ -77,6 +82,9 @@
 
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
+
+	<!-- make's the game use less ram -->
+	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
 
 	<!-- _________________________________ Custom _______________________________ -->
 
