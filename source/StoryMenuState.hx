@@ -294,6 +294,10 @@ class StoryMenuState extends MusicBeatState
 		}
 		add(cupTea);
 
+		#if android
+		addVirtualPad(UP_DOWN, A_B);
+		#end
+
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
 		{
 			allowTransit = true;
@@ -345,12 +349,12 @@ class StoryMenuState extends MusicBeatState
 				}
 			}
 
-			if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+			if (controls.UP_P || FlxG.keys.justPressed.W)
 			{
 				changeWeek(curWeek - 1);
 			}
 
-			if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.S)
+			if (controls.DOWN_P || FlxG.keys.justPressed.S)
 			{
 				changeWeek(curWeek + 1);
 			}
