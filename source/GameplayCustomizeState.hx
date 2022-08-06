@@ -55,6 +55,11 @@ class GameplayCustomizeState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = FlxG.save.data.highquality;
 		add(bg);
+		
+	  #if android
+  	addVirtualPad(FULL, A_B);
+  	addPadCamera();
+    #end
 
 		var camFollow = new FlxObject(0, 0, 1, 1);
 		var camPos:FlxPoint = new FlxPoint(500, 100);
