@@ -2936,6 +2936,10 @@ class PlayState extends MusicBeatState
 				songPosBarPreDemise.cameras = [camHUD];
 		}
 
+		#if android
+		addAndroidControls(); //aqui talvez
+		#end
+
 		if (SONG.song.toLowerCase() == 'technicolor-tussle'
 			|| SONG.song.toLowerCase() == 'knockout'
 			|| SONG.song.toLowerCase() == 'devils-gambit')
@@ -3598,6 +3602,10 @@ class PlayState extends MusicBeatState
 
 	function startCountdown():Void
 	{
+	  #if android
+	  androidControls.visible = true;
+	  #end
+
 		bumpRate = 4;
 
 		FlxG.stage.addEventListener(KeyboardEvent.KEY_DOWN, handleInput);
@@ -7688,6 +7696,10 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
+	  #if android
+	  androidControls.visible = true;
+	  #end
+
 		if (dodgeAmt == 0 && SONG.song.toLowerCase() == 'last-reel' && storyDifficulty == 2)
 		{
 			pushToAchievementIDS("Courage", true);
