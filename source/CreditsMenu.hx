@@ -386,6 +386,10 @@ class CreditsMenu extends MusicBeatState
 		bg.antialiasing = FlxG.save.data.highquality;
 		add(bg);
 
+    #if android
+  	addVirtualPad(FULL, A_B);
+    #end
+
 		for (i in 0...credTypes.length)
 		{
 			var bgBitmap:BitmapData = BitmapData.fromFile(Paths.image("credits/bg/" + credTypes[i] + '_BG', "preload"));
