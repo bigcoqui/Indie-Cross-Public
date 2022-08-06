@@ -250,6 +250,10 @@ class GameJoltLogin extends MusicBeatState
 		bg.screenCenter();
 		bg.scrollFactor.set();
 		add(bg);
+		
+		#if android
+  	addVirtualPad(UP_DOWN, A);
+    #end
 
 		charBop = new FlxSprite();
 		charBop.frames = Paths.getSparrowAtlas('gamejolt/BF', 'preload');
