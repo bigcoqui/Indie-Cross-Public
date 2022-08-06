@@ -27,10 +27,6 @@ import openfl.net.FileReference;
 
 using StringTools;
 
-#if cpp
-import systools.Clipboard;
-#end
-
 /**
 	*DEBUG MODE
  */
@@ -85,7 +81,6 @@ class AnimationDebug extends MusicBeatState
 		{
 			#if cpp
 			var leData = data.trim();
-			Clipboard.setText(leData);
 
 			trace('saved shit on clipboard :D');
 			#end
