@@ -144,6 +144,7 @@ class PauseSubState extends MusicBeatSubstate
 		
 		#if android
   	addVirtualPad(UP_DOWN, A);
+  	addPadCamera();
     #end
 
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
