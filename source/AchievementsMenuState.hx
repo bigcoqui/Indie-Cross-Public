@@ -47,6 +47,10 @@ class AchievementsMenuState extends MusicBeatState
 		menuBG.antialiasing = FlxG.save.data.highquality;
 		add(menuBG);
 
+    #if android
+  	addVirtualPad(FULL, A_B);
+    #end
+
 		grpAchievements = new FlxTypedGroup<Alphabet>();
 		add(grpAchievements);
 
