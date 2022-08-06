@@ -97,6 +97,10 @@ class OptionsMenu extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = FlxG.save.data.highquality;
 		add(bg);
+		
+		#if android
+  	addVirtualPad(FULL, A_B);
+    #end
 
 		grpControls = new FlxTypedGroup<Alphabet>();
 		add(grpControls);
