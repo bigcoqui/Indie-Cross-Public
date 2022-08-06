@@ -65,8 +65,8 @@
 	<haxelib name="extension-webview"/>
 	<haxelib name="linc_luajit" if="cpp"/>
 	<haxelib name="extension-androidtools" if="android"/>
-	<haxelib name="systools" if="cpp"/>
-    <ndll name="systools" haxelib="systools" if="cpp" />
+	
+  
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
