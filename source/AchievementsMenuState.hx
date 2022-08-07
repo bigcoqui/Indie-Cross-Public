@@ -47,10 +47,6 @@ class AchievementsMenuState extends MusicBeatState
 		menuBG.antialiasing = FlxG.save.data.highquality;
 		add(menuBG);
 
-    #if android
-  	addVirtualPad(FULL, A_B);
-    #end
-
 		grpAchievements = new FlxTypedGroup<Alphabet>();
 		add(grpAchievements);
 
@@ -92,6 +88,10 @@ class AchievementsMenuState extends MusicBeatState
 		add(descText);
 
 		changeSelection();
+
+    #if android
+  	addVirtualPad(UP_DOWN, A_B);
+    #end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
 		{
@@ -141,11 +141,11 @@ class AchievementsMenuState extends MusicBeatState
 			}
 		}
 
-		if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+		if (controls.UP_P || FlxG.keys.justPressed.W)
 		{
 			changeSelection(-1);
 		}
-		if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.S)
+		if (controls.DOWN_P || FlxG.keys.justPressed.S)
 		{
 			changeSelection(1);
 		}
