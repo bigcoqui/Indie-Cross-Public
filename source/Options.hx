@@ -331,7 +331,6 @@ class CacheStart extends Option
 	{
 		FlxG.save.data.cachestart = !FlxG.save.data.cachestart;
 		display = updateDisplay();
-		TitleState.restart();
 		return true;
 	}
 
@@ -1116,7 +1115,6 @@ class LogOutGJ extends Option
 	public override function press():Bool
 	{
 		GameJoltAPI.deAuthDaUser();
-		TitleState.restart();
 		return false;
 	}
 
