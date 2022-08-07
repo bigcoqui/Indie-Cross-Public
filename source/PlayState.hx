@@ -8051,7 +8051,6 @@ notes.forEachAlive(function(daNote:Note)
 							}
 						}
 					}
-				});
 				else
 					{
             possibleNotes.push(daNote);
