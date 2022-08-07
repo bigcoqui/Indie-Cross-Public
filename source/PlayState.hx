@@ -4075,6 +4075,7 @@ class PlayState extends MusicBeatState
 	}
 
 	var dodgeAmt:Int = 0;
+	var inputSpacePressed:Bool = false;
 
 	function bfMechDodge()
 	{
@@ -4093,6 +4094,8 @@ class PlayState extends MusicBeatState
 	var songStarted = false;
 
 	public static var startTime = 0.0;
+	var previousFrameTime:Int = 0;
+	var songTime:Float = 0;
 
 	function startSong():Void
 	{
