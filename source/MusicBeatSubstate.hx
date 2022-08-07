@@ -1,16 +1,17 @@
 package;
 
+#if android
+import android.flixel.FlxVirtualPad;
+import flixel.input.actions.FlxActionInput;
+import flixel.util.FlxDestroyUtil;
+#end
 import Shaders.ChromaHandler;
 import Shaders.BrightHandler;
 import flixel.FlxG;
 import Conductor.BPMChangeEvent;
 import flixel.FlxSubState;
 import openfl.filters.ShaderFilter;
-#if android
-import android.flixel.FlxVirtualPad;
-import flixel.input.actions.FlxActionInput;
-import flixel.util.FlxDestroyUtil;
-#end
+
 class MusicBeatSubstate extends FlxSubState
 {
 
@@ -24,9 +25,9 @@ class MusicBeatSubstate extends FlxSubState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
-	 #if android
+	#if android
 	var virtualPad:FlxVirtualPad;
-	var trackedinputsUI:Array<FlxActionInput> = [];
+	var trackedinputs:Array<FlxActionInput> = [];
 
 	public function addVirtualPad(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
@@ -40,8 +41,8 @@ class MusicBeatSubstate extends FlxSubState
 
 	public function removeVirtualPad()
 	{
-		if (trackedinputsUI != [])
-			controls.removeFlxInput(trackedinputsUI);
+		if (trackedinputs != [])
+			controls.removeFlxInput(trackedinputs);
 
 		if (virtualPad != null)
 			remove(virtualPad);
@@ -62,8 +63,8 @@ class MusicBeatSubstate extends FlxSubState
 	override function destroy()
 	{
 		#if android
-		if (trackedinputsUI != [])
-			controls.removeFlxInput(trackedinputsUI);
+		if (trackedinputs != [])
+			controls.removeFlxInput(trackedinputs);
 		#end
 
 		super.destroy();
@@ -76,6 +77,7 @@ class MusicBeatSubstate extends FlxSubState
 		}
 		#end
 	}
+
 	public function new()
 	{
 		FlxG.mouse.visible = false;
