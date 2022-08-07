@@ -104,7 +104,6 @@ class GameJoltAPI
 		FlxG.save.flush();
 		trace(FlxG.save.data.gjUser + FlxG.save.data.gjToken);
 		trace("Logged out!");
-		TitleState.restart();
 	}
 
 	public static function getTrophy(trophyID:Int)
