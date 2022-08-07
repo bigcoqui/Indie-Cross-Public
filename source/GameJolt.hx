@@ -56,7 +56,6 @@ class GameJoltAPI
 	public static function connect()
 	{
 		trace("Grabbing API keys...");
-		GJApi.init(Std.int(GJKeys.id), Std.string(GJKeys.key), false);
 	}
 
 	public static function authDaUser(in1, in2, ?loginArg:Bool = false)
