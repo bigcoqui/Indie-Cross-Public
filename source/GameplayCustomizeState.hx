@@ -55,11 +55,6 @@ class GameplayCustomizeState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = FlxG.save.data.highquality;
 		add(bg);
-		
-	  #if android
-  	addVirtualPad(FULL, A_B);
-  	addPadCamera();
-    #end
 
 		var camFollow = new FlxObject(0, 0, 1, 1);
 		var camPos:FlxPoint = new FlxPoint(500, 100);
@@ -110,6 +105,11 @@ class GameplayCustomizeState extends MusicBeatState
 		add(blackBorder);
 
 		add(text);
+
+	  #if android
+  	addVirtualPad(LEFT_FULL, A_B);
+  	addPadCamera();
+    #end
 
 		FlxTween.tween(text, {y: FlxG.height - 18}, 2, {ease: FlxEase.elasticInOut});
 		FlxTween.tween(blackBorder, {y: FlxG.height - 18}, 2, {ease: FlxEase.elasticInOut});
