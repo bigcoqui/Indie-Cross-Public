@@ -493,7 +493,6 @@ class MainMenuState extends MusicBeatState
 	
 					trace('cleared data');
 					FlxG.sound.play(Paths.sound('delete', 'preload'));
-					TitleState.restart();
 				}
 				Prompt.backThing = function()
 				{
