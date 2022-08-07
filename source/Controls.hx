@@ -535,12 +535,6 @@ class Controls extends FlxActionSet
 			if(key != NONE)
 				action.addKey(key, state);
 	}
-		
-	inline static function addKeys(action:FlxActionDigital, keys:Array<FlxKey>, state:FlxInputState)
-	{
-		for (key in keys)
-			action.addKey(key, state);
-	}
 
 	static function removeKeys(action:FlxActionDigital, keys:Array<FlxKey>)
 	{
