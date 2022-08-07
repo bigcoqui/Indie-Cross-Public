@@ -97,10 +97,6 @@ class OptionsMenu extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = FlxG.save.data.highquality;
 		add(bg);
-		
-		#if android
-  	addVirtualPad(FULL, A_B);
-    #end
 
 		grpControls = new FlxTypedGroup<Alphabet>();
 		add(grpControls);
@@ -132,6 +128,10 @@ class OptionsMenu extends MusicBeatState
 		FlxTween.tween(blackBorder, {y: FlxG.height - 18}, 2, {ease: FlxEase.elasticInOut});
 
 		changeSelection(0);
+
+		#if android
+  	addVirtualPad(LEFT_FULL, A_B);
+    #end
 
 		new FlxTimer().start(Main.transitionDuration, function(tmr:FlxTimer)
 		{
@@ -249,11 +249,11 @@ class OptionsMenu extends MusicBeatState
 				backOut();
 			}
 
-			if (FlxG.keys.justPressed.UP || FlxG.keys.justPressed.W)
+			if (controls.UP_P || FlxG.keys.justPressed.W)
 			{
 				changeSelection(curSelected - 1);
 			}
-			if (FlxG.keys.justPressed.DOWN || FlxG.keys.justPressed.S)
+			if (controls.DOWN_P || FlxG.keys.justPressed.S)
 			{
 				changeSelection(curSelected + 1);
 			}
