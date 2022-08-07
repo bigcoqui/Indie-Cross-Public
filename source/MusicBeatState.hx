@@ -1,5 +1,11 @@
 package;
 
+#if android
+import android.AndroidControls;
+import android.flixel.FlxVirtualPad;
+import flixel.input.actions.FlxActionInput;
+import flixel.util.FlxDestroyUtil;
+#end
 import Shaders.BloomHandler;
 import Shaders.ChromaHandler;
 import Shaders.BrightHandler;
@@ -11,12 +17,6 @@ import openfl.Lib;
 import openfl.filters.ShaderFilter;
 import openfl.display.FPS;
 
-#if android
-import android.AndroidControls;
-import android.flixel.FlxVirtualPad;
-import flixel.input.actions.FlxActionInput;
-import flixel.util.FlxDestroyUtil;
-#end
 class MusicBeatState extends FNFState
 {
 	private var lastBeat:Int = -1;
@@ -30,11 +30,10 @@ class MusicBeatState extends FNFState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
-		 #if android
+	#if android
 	var virtualPad:FlxVirtualPad;
 	var androidControls:AndroidControls;
-	var trackedinputsUI:Array<FlxActionInput> = [];
-	var trackedinputsNOTES:Array<FlxActionInput> = [];
+	var trackedinputs:Array<FlxActionInput> = [];
 
 	public function addVirtualPad(DPad:FlxDPadMode, Action:FlxActionMode)
 	{
@@ -48,8 +47,8 @@ class MusicBeatState extends FNFState
 
 	public function removeVirtualPad()
 	{
-		if (trackedinputsUI != [])
-			controls.removeFlxInput(trackedinputsUI);
+		if (trackedinputs != [])
+			controls.removeFlxInput(trackedinputs);
 
 		if (virtualPad != null)
 			remove(virtualPad);
@@ -62,16 +61,16 @@ class MusicBeatState extends FNFState
 		switch (AndroidControls.getMode())
 		{
 			case 0 | 1 | 2: // RIGHT_FULL | LEFT_FULL | CUSTOM
-				controls.setVirtualPadNOTES(androidControls.virtualPad, RIGHT_FULL, NONE);
+				controls.setVirtualPad(androidControls.virtualPad, RIGHT_FULL, NONE);
 			case 3: // BOTH_FULL
-				controls.setVirtualPadNOTES(androidControls.virtualPad, BOTH_FULL, NONE);
+				controls.setVirtualPad(androidControls.virtualPad, BOTH_FULL, NONE);
 			case 4: // HITBOX
 				controls.setHitBox(androidControls.hitbox);
 			case 5: // KEYBOARD
 		}
 
-		trackedinputsNOTES = controls.trackedinputsNOTES;
-		controls.trackedinputsNOTES = [];
+		trackedinputs = controls.trackedinputs;
+		controls.trackedinputs = [];
 
 		var camControls = new flixel.FlxCamera();
 		FlxG.cameras.add(camControls);
@@ -84,8 +83,8 @@ class MusicBeatState extends FNFState
 
 	public function removeAndroidControls()
 	{
-		if (trackedinputsNOTES != [])
-			controls.removeFlxInput(trackedinputsNOTES);
+		if (trackedinputs != [])
+			controls.removeFlxInput(trackedinputs);
 
 		if (androidControls != null)
 			remove(androidControls);
@@ -106,11 +105,8 @@ class MusicBeatState extends FNFState
 	override function destroy()
 	{
 		#if android
-		if (trackedinputsNOTES != [])
-			controls.removeFlxInput(trackedinputsNOTES);
-
-		if (trackedinputsUI != [])
-			controls.removeFlxInput(trackedinputsUI);
+		if (trackedinputs != [])
+			controls.removeFlxInput(trackedinputs);
 		#end
 
 		super.destroy();
@@ -129,6 +125,7 @@ class MusicBeatState extends FNFState
 		}
 		#end
 	}
+
 	override function create()
 	{
 		setChrome(0);
